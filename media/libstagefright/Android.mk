@@ -109,7 +109,7 @@ LOCAL_SHARED_LIBRARIES := \
         libjpeg \
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-ifneq ($(filter msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
+ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
 ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
    ifeq ($(USE_TUNNEL_MODE),true)
         LOCAL_CFLAGS += -DUSE_TUNNEL_MODE
@@ -198,7 +198,7 @@ LOCAL_SHARED_LIBRARIES += \
         libstagefright_foundation \
         libdl
 
-LOCAL_CFLAGS += -Wno-multichar
+LOCAL_CFLAGS += -Wno-multichar -Wno-unused-parameter
 
 ifeq ($(BOARD_USE_SAMSUNG_COLORFORMAT), true)
 LOCAL_CFLAGS += -DUSE_SAMSUNG_COLORFORMAT
@@ -208,6 +208,10 @@ LOCAL_C_INCLUDES += \
 	$(TOP)/hardware/samsung/exynos4/hal/include \
 	$(TOP)/hardware/samsung/exynos4/include
 
+endif
+
+ifeq ($(TARGET_BOARD_PLATFORM),msm7x27a)
+    LOCAL_CFLAGS += -DUSE_SUBMIT_ONE_INPUT_BUFFER
 endif
 
 LOCAL_MODULE:= libstagefright
