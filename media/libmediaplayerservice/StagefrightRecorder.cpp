@@ -1047,9 +1047,9 @@ sp<MediaSource> StagefrightRecorder::createAudioSource() {
             format->setString("mime", MEDIA_MIMETYPE_AUDIO_RAW);
             break;
 #ifdef ENABLE_AV_ENHANCEMENTS
-        case AUDIO_ENCODER_EVRC:
-            format->setString("mime", MEDIA_MIMETYPE_AUDIO_EVRC);
-            break;
+//        case AUDIO_ENCODER_EVRC:
+//            format->setString("mime", MEDIA_MIMETYPE_AUDIO_EVRC);
+//            break;
         case AUDIO_ENCODER_QCELP:
             format->setString("mime", MEDIA_MIMETYPE_AUDIO_QCELP);
             break;
@@ -2133,7 +2133,7 @@ status_t StagefrightRecorder::dump(
 #ifdef ENABLE_AV_ENHANCEMENTS
 
 status_t StagefrightRecorder::setupFMA2DPWriter() {
-    mWriter = new FMA2DPWriter();
+//    mWriter = new FMA2DPWriter();
     return setupRawAudioRecording();
 }
 
@@ -2156,7 +2156,7 @@ status_t StagefrightRecorder::setupExtendedRecording() {
         return BAD_VALUE;
     }
 
-    mWriter = new ExtendedWriter(mOutputFd);
+//    mWriter = new ExtendedWriter(mOutputFd);
     return setupRawAudioRecording();
 }
 #endif
